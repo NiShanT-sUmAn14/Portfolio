@@ -1,0 +1,383 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family:Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+html,body{
+  width: 100%;
+  height: 100%;
+}
+
+  body #minicircle{
+    height: 18px !important;
+    width: 18px !important;
+    border-radius: 50% !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: -9px 0 0 -9px !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    background: #ffffff !important;
+    box-shadow:
+      0 0 10px 2px rgba(255,255,255,0.9),
+      0 0 25px 8px rgba(255,255,255,0.5),
+      0 0 50px 15px rgba(255,255,255,0.25) !important;
+
+  }
+
+#heading{
+  margin-top: 90px;
+}
+.bounding {
+  overflow: hidden;   /* text yahin se kat kar chhupega */
+}
+.bounding .bounding_elem {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+#main{
+  width: 100%;
+}
+#hero{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  color: white;
+}
+#nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+width: 100%;
+padding: 20px 40px;
+color: white;
+ font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#nav a{
+color: white;
+text-decoration: none;
+font-size: 18px;
+font-family: Georgia, 'Times New Roman', Times, serif;
+display: block;
+}
+#heading{
+  margin-top: 90px;
+}
+#heading h1{
+  margin-left: 30px;
+  opacity: .7;
+  font-size: 8.5vw;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-transform: uppercase;
+}
+  #heading #secondH1{
+  margin-left: 230px;
+  
+  }
+  #chotiHeading{
+  padding-right: 30px;
+    text-align: right;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 70px;
+    font-size: 1.5vw;
+    text-transform: uppercase;
+color: #555;
+  }
+
+  /* second */
+  #kaam{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    width: fit-content;
+    padding-left: 1vw;           /* project titles ke saath align */
+    margin: 0 0 40px 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-size: 5.1vw;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    text-align: left;
+    color: #888;
+    opacity: 1;
+    transition: color .3s ease;
+  cursor: pointer;
+  }
+  #kaam::before{
+    content: "";
+    width: 300px;      /* 40px se badha diya */
+    height: 1px;
+    background: #464242;
+    transition: background .3s ease, width .3s ease;
+
+  }
+  #kaam:hover{
+    color: white;
+  }
+  #kaam:hover::before{
+    background: white;
+    width: 300px;   /* line bhi hover pe lambi ho jayegi */
+  }
+  #second{
+    padding-right: 10vw;
+    padding-top: 100px;   /* 200px se kam kiya */
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+  }
+.elem{
+  position: relative;
+  width: 100%;
+  padding: 2vw 1vw;
+  border-top: 1px solid white  ;
+}
+.elem h1 {
+  text-transform: uppercase;
+  font-size: 5vw;
+  opacity: .6;
+}
+.elemlast{
+border-bottom: 1px solid white ;
+}
+.elem img{
+  opacity: 0;            
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 160px;
+  z-index: 999;
+  pointer-events: none; 
+}
+#about{
+  width: 100%;
+  background-color: black;
+  padding: 5vw 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* space-around ki jagah */
+  gap: 5vw;                  /* photo aur text ke beech ka gap */
+}
+#image_about{
+  width: auto;
+  padding-left: 0;
+  border-radius: 50%;
+}
+#image_about img {
+  height: 300px;
+  width: 300px;
+border-radius: 50%;
+
+}
+#text_about{
+  width: 50%;}
+#text_about p{
+  padding-top:1.5rem ;
+  line-height: 1.2;
+}
+#text_about h4{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: 1.1vw;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #888;
+  text-decoration: underline;
+  text-decoration-color: #555;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 1px;
+  width: fit-content;
+  transition: color .3s ease, text-decoration-color .3s ease;
+}
+#text_about h4:hover{
+  color: white;
+  text-decoration-color: white;
+}
+#text_about p{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #bbb;
+  max-width: 560px;
+  letter-spacing: 0.02em;
+}
+.footer{
+  color: white;
+  width: 100%;
+  height: auto;
+  background-color: black;
+}
+#heroFooter{
+  width: 100%;
+  bottom: 3%;
+padding: 3vw 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.footer h1{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 400;
+  color: #888;
+  width: fit-content;
+  padding: 40px 1.4vw 0;
+  letter-spacing: 0.05em;
+  transition: color .4s ease, letter-spacing .6s ease;
+  cursor: pointer;
+}
+.footer h1:hover{
+  color: white;
+  letter-spacing: 0.3em;
+}
+#heroFooter a{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 6px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #888;
+  transition: color .4s ease, letter-spacing .5s ease;
+}
+
+/* underline jo left se right khulti hai */
+#heroFooter a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 0;
+  background: white;
+  transition: width .5s ease;
+}
+
+/* arrow icon */
+#heroFooter a i{
+  display: inline-block;
+  transition: transform .4s ease;
+}
+
+#heroFooter a:hover{
+  color: white;
+  letter-spacing: 0.3em;
+}
+#heroFooter a:hover::after{
+  width: 100%;
+}
+#heroFooter a:hover i{
+  transform: translate(4px, -4px);   /* arrow upar-right kheeche */
+}
+#chotiHeading{
+  margin-top: 200px;   /* pehle 70px tha */
+}
+#hero{
+  display: flex;
+  flex-direction: column;
+}
+#chotiHeading{
+  margin-top: auto;      /* hero ke neeche chipak jayegi */
+  padding-bottom: 40px;
+}
+
+/* shared: sirf animation ke liye */
+.bounding{
+  overflow: hidden;
+}
+
+/* sirf nav ke liye */
+.nav_left{
+  display: flex;
+  align-items: center;
+  
+}
+.nav_left #mylogo{
+  height: 30px;
+  width: 30px;
+}
+.nav_left a{
+  display: block;
+  position: relative;
+  top: 6px;        /* 6px se 12px tak apne hisaab se badlo */
+}
+.nav_right a{
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+  color: white;
+  text-decoration: none;
+}
+.nav_right a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: rgb(232, 227, 227);
+  transition: width .4s ease;
+}
+.nav_right a:hover::after{
+  width: 100%;
+}
+.elem h1{
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 5vw;
+  text-transform: uppercase;
+  color: #888;
+  transition: color .4s ease, padding-left .5s ease;
+}
+.elem:hover h1{
+  color: white;
+  padding-left: 1.5vw;
+}
+#status{
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#status p{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 24px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #888;
+  transition: color .3s ease;
+}
+#status:hover p{
+  color: white;
+}
+.dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 10px #22c55e;
+  animation: blink 1.5s infinite;
+}
+@keyframes blink{
+  50%{ opacity: .2; }
+}
+.status_inner{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
