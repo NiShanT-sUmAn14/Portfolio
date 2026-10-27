@@ -22,9 +22,9 @@ Hi, I'm Nishant Suman, a third-year B.Tech IT student building skills in full-st
 
 ## Projects Showcased
 
-- **E-commerce** – add a one-line description here
-- **RAG** – add a one-line description here
-- **Redis** – add a one-line description here
+- **E-commerce** –  Online shopping website with product listing, cart and checkout flow, built with the MERN stack.
+- **RAG** – Retrieval-Augmented Generation app that answers questions from your own documents using embeddings and an LLM.
+- **Redis** – Project using Redis for caching to speed up data access and reduce database load.
 
 ## Run Locally
 
