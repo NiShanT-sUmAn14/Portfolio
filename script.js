@@ -3,8 +3,11 @@ const scroll = new LocomotiveScroll({
   smooth: true
 });
 
+const isTouch = window.matchMedia("(hover: none)").matches;
 
+/* ---------- cursor circle (sirf mouse wale devices pe) ---------- */
 function circleMouseFollow(){
+  if (isTouch) return;
   window.addEventListener("mousemove", function(dets){
     gsap.to("#minicircle", {
       x: dets.clientX,
@@ -16,6 +19,7 @@ function circleMouseFollow(){
 }
 circleMouseFollow();
 
+/* ---------- opening animation ---------- */
 function firstPageAnim(){
   gsap.from("#nav .bounding_elem", {
     yPercent: 100,
@@ -43,54 +47,46 @@ function firstPageAnim(){
 }
 firstPageAnim();
 
-document.querySelectorAll(".elem").forEach(function(elem){
-  const img = elem.querySelector("img");
-  let prevX = 0;
-  let resetTimer;
+/* ---------- project hover images (sirf mouse wale devices pe) ---------- */
+if (!isTouch) {
+  document.querySelectorAll(".elem").forEach(function(elem){
+    const img = elem.querySelector("img");
+    if (!img) return;
 
-  elem.addEventListener("mouseenter", function(e){
-    prevX = e.clientX;
-    gsap.to(img, { opacity: 1, duration: 0.3, overwrite: "auto" });
-  });
+    let prevX = 0;
+    let resetTimer;
 
-  elem.addEventListener("mousemove", function(e){
-    const rect = elem.getBoundingClientRect();
-
-    // speed + direction
-    const diff = e.clientX - prevX;
-    prevX = e.clientX;
-    const rotation = gsap.utils.clamp(-25, 25, diff * 0.8);
-
-    gsap.to(img, {
-      x: e.clientX - rect.left - img.offsetWidth / 2,
-      y: e.clientY - rect.top - img.offsetHeight / 2,
-      rotate: rotation,
-      duration: 0.4,
-      ease: "power3.out",
-      overwrite: "auto"
+    elem.addEventListener("mouseenter", function(e){
+      prevX = e.clientX;
+      gsap.to(img, { opacity: 1, duration: 0.3, overwrite: "auto" });
     });
 
-    // mouse ruk jaye toh image seedhi ho jaye
-    clearTimeout(resetTimer);
-    resetTimer = setTimeout(function(){
-      gsap.to(img, { rotate: 0, duration: 0.6, ease: "power3.out" });
-    }, 80);
-  });
+    elem.addEventListener("mousemove", function(e){
+      const rect = elem.getBoundingClientRect();
 
-  elem.addEventListener("mouseleave", function(){
-    gsap.to(img, { opacity: 0, rotate: 0, duration: 0.3, overwrite: "auto" });
+      // speed + direction
+      const diff = e.clientX - prevX;
+      prevX = e.clientX;
+      const rotation = gsap.utils.clamp(-25, 25, diff * 0.8);
+
+      gsap.to(img, {
+        x: e.clientX - rect.left - img.offsetWidth / 2,
+        y: e.clientY - rect.top - img.offsetHeight / 2,
+        rotate: rotation,
+        duration: 0.4,
+        ease: "power3.out",
+        overwrite: "auto"
+      });
+
+      // mouse ruk jaye toh image seedhi ho jaye
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(function(){
+        gsap.to(img, { rotate: 0, duration: 0.6, ease: "power3.out" });
+      }, 80);
+    });
+
+    elem.addEventListener("mouseleave", function(){
+      gsap.to(img, { opacity: 0, rotate: 0, duration: 0.3, overwrite: "auto" });
+    });
   });
-});
-gsap.from("#text_about .bounding_elem", {
-  yPercent: 100,
-  duration: 1.2,
-  ease: "expo.out",
-  delay: 0.3
-});
-gsap.from(".marquee_track", {
-  yPercent: 100,
-  opacity: 0,
-  duration: 1.2,
-  ease: "expo.out",
-  delay: 1.5
-});
+}
