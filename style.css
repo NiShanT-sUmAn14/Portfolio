@@ -35,7 +35,7 @@ body #minicircle{
 
 /* ---------- SHARED ---------- */
 .bounding{
-  overflow: hidden;   /* text yahin se kat kar chhupega */
+  overflow: hidden;
 }
 .bounding .bounding_elem{
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -51,6 +51,7 @@ body #minicircle{
   flex-direction: column;
   width: 100%;
   height: 100vh;
+  height: 100svh;
   background-color: black;
   color: white;
 }
@@ -84,14 +85,14 @@ body #minicircle{
   margin-left: 230px;
 }
 #chotiHeading{
-  margin-top: auto;      /* hero ke neeche chipak jayegi */
+  margin-top: auto;
   padding-right: 30px;
   padding-bottom: 40px;
   text-align: right;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 1.5vw;
+  font-size: clamp(11px, 1.5vw, 24px);
   text-transform: uppercase;
-  color: #555;
+  color: rgb(195, 191, 191);
 }
 
 /* nav */
@@ -126,6 +127,40 @@ body #minicircle{
   transition: width .4s ease;
 }
 .nav_right a:hover::after{
+  width: 100%;
+}
+
+/* nav menu */
+.menu_inner{
+  display: flex;
+  gap: 32px;
+}
+.nav_menu a{
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #888;
+  transition: color .3s ease;
+}
+.nav_menu a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: white;
+  transition: width .4s ease;
+}
+.nav_menu a:hover{
+  color: white;
+}
+.nav_menu a:hover::after{
   width: 100%;
 }
 
@@ -165,7 +200,61 @@ body #minicircle{
 @keyframes blink{
   50%{ opacity: .2; }
 }
-
+/* ---------- RESUME BUTTONS ---------- */
+#resume_wrap{
+  margin: 50px 0 0 30px;
+  width: fit-content;
+  padding: 4px;               /* pill ka glow na kate */
+}
+.resume_inner{
+  display: flex;
+  gap: 16px;
+}
+.resume_btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border: 1px solid #888;
+  border-radius: 100px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: clamp(13px, 1.1vw, 18px);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgb(156, 154, 154);
+  background: transparent;
+  transition: background .4s ease, color .4s ease, border-color .4s ease;
+}
+.resume_btn i{
+  transition: transform .4s ease;
+}
+.resume_btn:hover{
+  background: white;
+  color: black;
+  border-color: white;
+}
+.resume_btn:hover i{
+  transform: translate(3px, -3px);
+}
+.resume_dl{
+  color: #888;
+}
+/* ---------- AVATAR ---------- */
+#avatar_wrap{
+  position: absolute;
+  right: 4vw;
+  bottom: 80px;
+  height: 72svh;         /* pehle 62svh */
+  z-index: 1;
+  pointer-events: none;
+}
+#avatar{
+  height: 100%;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.08));
+}
 /* ---------- PROJECTS ---------- */
 #kaam{
   display: flex;
@@ -177,7 +266,7 @@ body #minicircle{
   margin: 0 0 40px 0;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 400;
-  font-size: 5.1vw;
+  font-size: clamp(18px, 5.1vw, 100px);
   letter-spacing: 0.4em;
   text-transform: uppercase;
   text-align: left;
@@ -217,7 +306,7 @@ body #minicircle{
 .elem h1{
   font-family: 'Playfair Display', serif;
   font-weight: 400;
-  font-size: 5vw;
+  font-size: clamp(22px, 5vw, 90px);
   text-transform: uppercase;
   opacity: .6;
   color: #888;
@@ -238,6 +327,68 @@ body #minicircle{
   height: 160px;
   z-index: 999;
   pointer-events: none;
+}
+
+/* ---------- SKILLS ---------- */
+#skills{
+  width: 100%;
+  background-color: black;
+  padding: 100px 10vw 100px 0;
+}
+#skills_label{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: fit-content;
+  padding-left: 1vw;
+  margin-bottom: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: clamp(22px, 3.5vw, 56px); 
+  letter-spacing: 0.4em;
+  gap: 24px;  letter-spacing: 0.4em;
+  color: #888;
+}
+#skills_label::before{
+  content: "";
+  width: 200px;  
+  height: 1px;
+  background: #464242;
+}
+.skill_row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 28px 1vw;
+  border-top: 1px solid #333;
+  transition: padding-left .5s ease;
+}
+.skill_last{
+  border-bottom: 1px solid #333;
+}
+.skill_row h3{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: clamp(18px, 2.2vw, 40px);
+  text-transform: uppercase;
+  color: #888;
+  transition: color .4s ease;
+}
+.skill_row p{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: clamp(14px, 1.3vw, 24px);
+  letter-spacing: 0.1em;
+  color: #666;
+  text-align: right;
+  transition: color .4s ease;
+}
+.skill_row:hover{
+  padding-left: 1.5vw;
+}
+.skill_row:hover h3,
+.skill_row:hover p{
+  color: white;
 }
 
 /* ---------- ABOUT ---------- */
@@ -266,7 +417,7 @@ body #minicircle{
 #text_about h4{
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 400;
-  font-size: 1.1vw;
+  font-size: clamp(13px, 1.1vw, 20px);
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: #888;
@@ -359,61 +510,151 @@ body #minicircle{
   transform: translate(4px, -4px);
 }
 
+/* ---------- SCROLL REVEAL ---------- */
+.reveal{
+  opacity: 0;
+}
+.reveal.in-view{
+  animation: fadeUp .9s cubic-bezier(.16, 1, .3, 1) forwards;
+}
+@keyframes fadeUp{
+  from{ opacity: 0; transform: translateY(40px); }
+  to{ opacity: 1; transform: none; }
+}
+
+/* ---------- TAP GLOW ---------- */
+.tap-glow{
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 0 10px 2px rgba(255,255,255,0.9),
+    0 0 25px 8px rgba(255,255,255,0.5);
+  pointer-events: none;
+  z-index: 9999;
+  animation: tapGlow .7s ease-out forwards;
+}
+@keyframes tapGlow{
+  from{ transform: scale(.5); opacity: 1; }
+  to{ transform: scale(4); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity: 1; }
+  .reveal.in-view,
+  .tap-glow{ animation: none; }
+}
+
 /* =========================================================
    RESPONSIVE (hamesha sabse neeche rakhna)
    ========================================================= */
 
-/* Touch devices: cursor circle aur hover images ki zaroorat nahi */
+/* Touch devices */
 @media (hover: none){
+  .resume_btn:hover{
+    background: transparent;
+    color: white;
+    border-color: #888;
+  }
+
   body #minicircle{ display: none !important; }
-  .elem img{ display: none; }
-  .elem:hover h1{ padding-left: 0; }
   #heroFooter a:hover{ letter-spacing: 0.2em; }
   .footer h1:hover{ letter-spacing: 0.05em; }
+
+  /* project row: tap pe image khule */
+  .elem:hover h1{ padding-left: 0; }
+  .elem h1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .elem h1::after{
+    content: "+";
+    font-size: 0.8em;
+    transition: transform .4s ease;
+  }
+  .elem.open h1::after{ transform: rotate(45deg); }
+  .elem img{
+    display: block;
+    position: static;
+    opacity: 1;
+    width: 100%;
+    height: 0;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: height .5s ease, margin-top .5s ease;
+  }
+  .elem.open img{ height: 200px; margin-top: 16px; }
+
+  /* jo row screen ke beech mein ho wo highlight */
+  .elem h1,
+  .skill_row h3,
+  .skill_row p{ transition: color .5s ease, padding-left .5s ease; }
+  .elem.active h1{ color: white; opacity: 1; padding-left: 3vw; }
+  .skill_row.active h3,
+  .skill_row.active p{ color: white; }
+  .skill_row:hover{ padding-left: 20px; }
 }
 
 /* Tablet */
 @media (max-width: 1024px){
   #heading #secondH1{ margin-left: 15vw; }
   #status p{ font-size: 18px; }
-  #chotiHeading{ font-size: 2vw; }
   #kaam::before,
   #kaam:hover::before{ width: 120px; }
+  .menu_inner{ gap: 20px; }
+  .nav_menu a{ font-size: 13px; }
 }
 
-/* Mobile */
+/* Mobile (sab phones) */
 @media (max-width: 768px){
-
-  /* NAV */
-  #nav{ padding: 16px 20px; }
+  #avatar_wrap{
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 120px;
+    height: 44svh;       /* pehle 36svh */
+  }
+  #resume_wrap{ margin: 30px 0 0 20px; }
+  .resume_inner{ gap: 10px; flex-wrap: wrap; }
+  .resume_btn{
+    padding: 12px 20px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  /* NAV: logo + email upar, menu neeche poori width mein */
+  #nav{
+    flex-wrap: wrap;
+    row-gap: 14px;
+    padding: 16px 20px;
+  }
   #nav a{ font-size: 13px; }
   .nav_left a{ top: 4px; }
+  .nav_menu{ order: 3; width: 100%; }
+  .menu_inner{ justify-content: space-between; gap: 10px; }
+  .nav_menu a{ font-size: 11px; letter-spacing: 0.08em; }
 
   /* HERO */
-  #heading{ margin-top: 50px; }
+  #heading{ margin-top: 40px; }
   #heading h1{
     font-size: 10vw;
     margin-left: 20px;
     white-space: nowrap;
   }
   #heading #secondH1{ margin-left: 10vw; }
-  #chotiHeading{
-    font-size: 11px;
-    padding-right: 20px;
-    padding-bottom: 30px;
-  }
+  #chotiHeading{ padding-right: 20px; padding-bottom: 30px; }
   #status{ left: 20px; bottom: 90px; }
   #status p{ font-size: 12px; letter-spacing: 0.12em; }
 
   /* PROJECTS */
   #second{
     min-height: auto;
-    padding-top: 60px;
-    padding-right: 0;
-    padding-bottom: 60px;
+    padding: 60px 0;
   }
   #kaam{
-    font-size: 18px;
     letter-spacing: 0.25em;
     margin-bottom: 24px;
     padding-left: 20px;
@@ -421,7 +662,34 @@ body #minicircle{
   #kaam::before,
   #kaam:hover::before{ width: 40px; }
   .elem{ padding: 20px; }
-  .elem h1{ font-size: 7vw; }
+
+  /* SKILLS */
+  #skills{ padding: 60px 0; }
+  #skills_label{
+    font-size: 24px;          /* pehle 16px */
+    letter-spacing: 0.3em;
+    gap: 14px;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    
+  }
+  #skills_label::before{ width: 40px; }
+  .skill_row{
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 22px 20px;
+  }
+  .skill_row h3{
+    font-size: 20px;
+    letter-spacing: 0.05em;
+  }
+  .skill_row p{
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: left;
+  }
 
   /* ABOUT */
   #about{
@@ -431,7 +699,6 @@ body #minicircle{
   }
   #image_about img{ height: 220px; width: 220px; }
   #text_about{ width: 100%; }
-  #text_about h4{ font-size: 13px; }
   #text_about p{
     font-size: 1rem;
     line-height: 1.6;
@@ -449,11 +716,22 @@ body #minicircle{
   #heroFooter a:hover{ letter-spacing: 0.1em; }
 }
 
-/* Chhoti phone screens */
+/* Chhoti screens (400px aur neeche) */
 @media (max-width: 400px){
+  #avatar_wrap{ height: 38svh; bottom: 110px; }   /* pehle 32svh */  #nav{ padding: 14px 16px; }
   #nav a{ font-size: 11px; }
+  .nav_menu a{ font-size: 10px; letter-spacing: 0.05em; }
   #heading h1{ font-size: 9vw; }
   #heading #secondH1{ margin-left: 8vw; }
-  .elem h1{ font-size: 8vw; }
   #status{ bottom: 80px; }
+  #status p{ font-size: 11px; }
+  .skill_row h3{ font-size: 18px; }
+  .skill_row p{ font-size: 14px; }
+  #skills_label{ font-size: 20px; letter-spacing: 0.25em; }
+}
+
+/* Landscape phone (aadhi height wali screen) */
+@media (max-height: 500px) and (orientation: landscape){
+  #hero{ min-height: 500px; height: auto; }
+  #status{ bottom: 20px; }
 }
