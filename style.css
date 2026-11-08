@@ -735,3 +735,18 @@ body #minicircle{
   #hero{ min-height: 500px; height: auto; }
   #status{ bottom: 20px; }
 }
+#hero, #second, #about, #skills, .footer{
+  background-color: transparent;
+}
+html{ background-color: #070a14; }
+
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 50% at 20% 100%, #0f3b3a 0%, transparent 60%),
+radial-gradient(ellipse 60% 50% at 90% 0%, #1d2a55 0%, transparent 60%),
+#060b10;
+}
